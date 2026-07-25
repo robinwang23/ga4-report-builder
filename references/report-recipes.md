@@ -48,6 +48,8 @@ Either way, state four things: the inclusion criterion (usually first touch or `
 
 A custom detail report does not reproduce cohort retention. Don't claim it does unless the GA4 interface genuinely supports the cohort semantics being asked for.
 
+Requests phrased around a behavior — retention of users who purchased, who finished onboarding, who used a particular feature — are behavioral cohorts and always go to `Explore → Cohort exploration`. The click paths are in `chrome-ga4-workflow.md`. Note that the result stays in `Explore` and never lands in `Library`, so it can't be added to an overview report alongside the other recipes here.
+
 ## Assembling an overview
 
 Build summary cards from detail reports you've already validated, then collect them into an overview. A reasonable set:

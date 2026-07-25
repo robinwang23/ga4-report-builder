@@ -10,13 +10,27 @@ Most GA4 reporting failures aren't reporting failures. They're modeling mistakes
 ## Workflow
 
 1. Write down the question and the measurement definition behind it. "Active users" and "users who did something" are not the same number, and the gap only shows up later.
-2. Read the event dictionary. Map the question onto representative event names, categorical parameters, numeric parameters, and whichever built-in dimensions and metrics already cover it.
+2. Read the event dictionary. If there isn't one, build a working version from the property itself (see below). Map the question onto representative event names, categorical parameters, numeric parameters, and whichever built-in dimensions and metrics already cover it.
 3. Consult `references/ga4-data-model.md` before proposing any new custom definition.
 4. Pull the matching recipe from `references/report-recipes.md` — growth, feature usage, retention, errors.
 5. Build the report.
 6. Say what the data can't answer. Missing events, missing parameters, wrong parameter scope, a registration date that postdates the range, GA4's own aggregation behavior: any of these can make a report technically correct and practically useless.
 
 For direct browser work, read `references/chrome-ga4-workflow.md` first, then confirm the account and property, inventory what already exists, and verify each save against what GA4 actually displays.
+
+## Building a dictionary when there isn't one
+
+Plenty of teams have no event dictionary, or have one that stopped matching reality two releases ago. You can reconstruct a usable one from the property in a few minutes, as long as you're honest about what it does and doesn't tell you.
+
+`Admin → Data display → Events` lists every event name the property has received, with counts and users over the selected range. This gives you the complete event surface. Extend the range before trusting it — an event fired only by a monthly job won't appear in a 7-day window.
+
+`Admin → Data display → Custom definitions` lists the parameters someone already registered, along with their scope and the underlying parameter name. These are the parameters you can put in a report today without registering anything new.
+
+Between those two pages you get event names and registered parameters. What you don't get is **unregistered parameters** — GA4's admin screens simply don't enumerate them. To see those you need `Admin → DebugView` with a device in debug mode, the app's own tracking code, or a BigQuery export if the property has one linked. Say which method you used, because a dictionary built from DebugView reflects one session on one device, not the whole app.
+
+Two things to record for every event you list: whether it's a GA4 automatic or enhanced-measurement event rather than a custom one, and the registration date of any custom definition attached to it. Both change what a report can show, and both are invisible once you're inside the report editor.
+
+When the reconstructed dictionary has gaps, report the gaps. A dictionary that is quietly 60% complete produces reports that are confidently wrong.
 
 ## Modeling
 
@@ -58,8 +72,11 @@ Before packaging or publishing, scan every file and archive in it for task-speci
 All click paths assume the English UI:
 
 ```
+Admin → Data display → Events
 Admin → Data display → Custom definitions
+Admin → DebugView
 Reports → Library
+Explore → Cohort exploration
 Create new report → Create detail report
 Create new report → Create overview report
 Report data → Dimensions
