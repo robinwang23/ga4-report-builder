@@ -1,4 +1,4 @@
-# GA4 Report Builder
+# GA4 Auto Report Builder
 
 A portable agent skill for building GA4 custom reports that mean what they appear to mean.
 
