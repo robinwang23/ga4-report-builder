@@ -9,8 +9,7 @@ It's plain Markdown. No runtime, no dependencies, no install step beyond putting
 
 GA4 makes it easy to build a report that is technically valid and quietly wrong. A parameter registered as a metric when it should have been a dimension. A custom dimension named after an event but bound to a duration. Daily active users summed into a monthly figure that's inflated by every returning user. Rows collapsing into `(not set)` because the selected dimension only exists on some of the filtered events.
 
-
-<img width="550" height="416" alt="0015915_google-analytics_550" src="https://github.com/user-attachments/assets/0ee0cd48-7c18-44e2-8293-c092f1e65ff6" />
+<img width="3840" height="2160" alt="Google-Analytics-Logo" src="https://github.com/user-attachments/assets/683cafbd-947c-4f20-b3f5-7b3659d2a3de" />
 
 None of these throw an error. They just produce numbers that people act on.
 
