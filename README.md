@@ -1,12 +1,16 @@
 # GA4 Auto Report Builder
 
 A portable agent skill for building GA4 custom reports that mean what they appear to mean.
+<img width="1146" height="1024" alt="Weixin Image_2026-07-27_230130_706" src="https://github.com/user-attachments/assets/8ef292b7-b4cd-4b5d-a8e2-314d71578dcc" />
 
 It's plain Markdown. No runtime, no dependencies, no install step beyond putting the folder somewhere your assistant reads skills from. If you'd rather do the clicking yourself, it also works as a straightforward GA4 playbook.
 
 ## The problem it solves
 
 GA4 makes it easy to build a report that is technically valid and quietly wrong. A parameter registered as a metric when it should have been a dimension. A custom dimension named after an event but bound to a duration. Daily active users summed into a monthly figure that's inflated by every returning user. Rows collapsing into `(not set)` because the selected dimension only exists on some of the filtered events.
+
+
+<img width="550" height="416" alt="0015915_google-analytics_550" src="https://github.com/user-attachments/assets/0ee0cd48-7c18-44e2-8293-c092f1e65ff6" />
 
 None of these throw an error. They just produce numbers that people act on.
 
